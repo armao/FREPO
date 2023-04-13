@@ -19,7 +19,7 @@
 
 
 
-void add_viewer(std::vector<std::string>& vec, std::ifstream& input)
+void add_viewers(std::vector<std::string>& vec, std::ifstream& input)
 {
     do
     {
@@ -35,75 +35,98 @@ void add_viewer(std::vector<std::string>& vec, std::ifstream& input)
         }
 
     } while (true);
+
 }
 
-std::vector<std::string> create_viewer_list(const std::string& fileName)
+void add_viewers(std::set<std::string>& set, const std::string& fileName)
 {
     std::ifstream file(fileName);
-    std::vector<std::string> viewerList;
+    std::string name;
+    while (getline(file, name))
+    {
+        set.insert(name);
+    }
 
-    add_viewer(viewerList, file);
-
-    return viewerList;
 }
 
-void print_viewrs(const std::vector<std::string>& viewerList)
+void add_viewers(std::map<std::string, int>& map, const std::string& fileName)
 {
+    std::ifstream file(fileName);
+    std::string name;
+    while (getline(file, name))
+    {
+        map[name]++;
+    }
+
+}
+
+void print_viewrsFlie(const std::string& viewrsFlie)
+{
+    std::ifstream file(viewrsFlie);
+    std::vector<std::string> viewerList;
+
+    add_viewers(viewerList, file);
+
     for (const std::string s : viewerList)
     {
         std::cout << s << std::endl;
     }
+
 }
-
-
-struct viewer
-{
-    void add_times()
-    {
-        m_times += 1;
-    }
-
-    std::string m_name;
-    int m_times = 0;
-};
 
 int main(int argc, char* argv[])
 {
-    print_viewrs(create_viewer_list("veiwers1.txt"));
-    print_viewrs(create_viewer_list("veiwers2.txt"));
-    print_viewrs(create_viewer_list("veiwers3.txt"));
+    print_viewrsFlie(argv[1]);
+    print_viewrsFlie(argv[2]);
+    print_viewrsFlie(argv[3]);
 
-    std::set<std::string> set1;
+    std::cout << std::endl;
+    std::cout << "以上是原名單" << std::endl << std::endl;
 
-    for (const std::string s : create_viewer_list("veiwers1.txt"))
+    //part1
+    std::set<std::string> viewersSet;
+    std::cout << std::endl <<  "Part1: " << std::endl << std::endl;
+
+    add_viewers(viewersSet, argv[1]);
+    add_viewers(viewersSet, argv[2]);
+    add_viewers(viewersSet, argv[3]);
+
+    for (const auto& name : viewersSet)
     {
-        set1.insert(s);
-    }
-
-    for (const std::string s : create_viewer_list("veiwers2.txt"))
-    {
-        set1.insert(s);
-    }
-
-    for (const std::string s : create_viewer_list("veiwers3.txt"))
-    {
-        set1.insert(s);
-    }
-
-    std::map<std::string, viewer> map1;
-
-    for (const auto& s : set1) 
-    {
-        map1[s] = {s};
-        std::cout << s << " | ";
+        std::cout << name << std::endl;
     }
     std::cout << std::endl;
 
-    for (const auto& m : map1) {
-        std::cout << "key: " << m.first << " name: " << m.second.m_name << " times: " << m.second.m_times << std::endl;
+    //part3
+    std::map<std::string, int> viewersMap;
+
+    add_viewers(viewersMap, argv[1]);
+    add_viewers(viewersMap, argv[2]);
+    add_viewers(viewersMap, argv[3]);
+
+    std::cout  << std::endl << "Part3: " << std::endl << std::endl;
+    for (const auto& [name, count] : viewersMap) {
+        std::cout << name << " : " << count << " times." << std::endl;
     }
 
+    //++婚
+    std::vector<std::string> filesName = { argv[1], argv[2], argv[3] };
+    std::set<std::string> names;
     
+    std::cout << std::endl << std::endl << "++婚: " << std::endl << std::endl;
+    
+    for (const auto& files : filesName) 
+    {
+        std::ifstream input(files);
+        std::string name;
+        while (getline(input, name)) 
+        {
+            if (names.insert(name).second) 
+            {
+                std::cout << name << std::endl;
+            }
+        }
+    }
 
     return 0;
 }
