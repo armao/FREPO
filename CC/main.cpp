@@ -18,6 +18,29 @@
 // print時說這個觀眾出現在幾個台
 
 
+void add_viewers_v2(std::vector<std::string>& vec, int argc, char* argv[])
+{
+      for (int argvIdx = 1; argvIdx < argc; ++argvIdx)
+      {
+            std::ifstream input(argv[argvIdx]);
+            do
+            {
+                  std::string str;
+                  input >> str;
+                  if (!input.fail())
+                  {
+                        vec.push_back(str);
+                  }
+                  else
+                  {
+                        break;
+                  }
+
+            } while (true);
+
+      }
+
+}
 
 void add_viewers(std::vector<std::string>& vec, std::ifstream& input)
 {
@@ -85,12 +108,8 @@ int main(int argc, char* argv[])
       //add
 
       std::vector<std::string> vl;
-      std::ifstream file1(argv[1]);
-      std::ifstream file2(argv[2]);
-      std::ifstream file3(argv[3]);
-      add_viewers(vl, file1);
-      add_viewers(vl, file2);
-      add_viewers(vl, file3);
+
+      add_viewers_v2(vl, argc, argv);
 
       //part1
       
@@ -127,7 +146,6 @@ int main(int argc, char* argv[])
                         std::cout << name << std::endl;
                   }
             }
-
 
       return 0;
 }
