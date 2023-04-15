@@ -138,13 +138,21 @@ int main(int argc, char* argv[])
       std::cout << std::endl << std::endl << "++婚: " << std::endl << std::endl;
 
       std::set<std::string> plusScoreSet;
+      std::vector<std::string> plusScoreList;
 
             for (const std::string& name : vl)
             {
                   if (plusScoreSet.insert(name).second)
                   {
                         std::cout << name << std::endl;
+                        plusScoreList.push_back(name);
                   }
+            }
+            std::cout << std::endl << "-----test print-----" << std::endl << std::endl;
+
+            for (const std::string& name : plusScoreList)
+            {
+                  std::cout << name << std::endl;
             }
 
       return 0;
