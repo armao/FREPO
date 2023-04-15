@@ -8,14 +8,14 @@
 #include <unordered_map> // hash table
 
 // HW part. 1
-// print¥X©Ò¦³¹êªp¥x¸Ì¤£­«½ÆªºÆ[²³¦W³æ
+// printå‡ºæ‰€æœ‰å¯¦æ³å°è£¡ä¸é‡è¤‡çš„è§€çœ¾åå–®
 
 // HW part. 2 plus
-// ¸òpart 1¤@¼Ëprint¥XÆ[²³¦W³æ
-// ¦ıprint§¹²Ä¤@­ÓÀÉ®×ªº¦W³æ¤~print²Ä¤G­ÓÀÉ®×ªº¦W³æ
+// è·Ÿpart 1ä¸€æ¨£printå‡ºè§€çœ¾åå–®
+// ä½†printå®Œç¬¬ä¸€å€‹æª”æ¡ˆçš„åå–®æ‰printç¬¬äºŒå€‹æª”æ¡ˆçš„åå–®
 
 // HW part. 3
-// print®É»¡³o­ÓÆ[²³¥X²{¦b´X­Ó¥x
+// printæ™‚èªªé€™å€‹è§€çœ¾å‡ºç¾åœ¨å¹¾å€‹å°
 
 
 
@@ -81,7 +81,7 @@ int main(int argc, char* argv[])
     print_viewrsFlie(argv[3]);
 
     std::cout << std::endl;
-    std::cout << "¥H¤W¬O­ì¦W³æ" << std::endl << std::endl;
+    std::cout << "ä»¥ä¸Šæ˜¯åŸåå–®" << std::endl << std::endl;
 
     //part1
     std::set<std::string> viewersSet;
@@ -109,11 +109,11 @@ int main(int argc, char* argv[])
         std::cout << name << " : " << count << " times." << std::endl;
     }
 
-    //++±B
+    //++å©š
     std::vector<std::string> filesName = { argv[1], argv[2], argv[3] };
     std::set<std::string> names;
     
-    std::cout << std::endl << std::endl << "++±B: " << std::endl << std::endl;
+    std::cout << std::endl << std::endl << "++å©š: " << std::endl << std::endl;
     
     for (const auto& files : filesName) 
     {
