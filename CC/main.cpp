@@ -118,15 +118,16 @@ int main(int argc, char* argv[])
       
       std::cout << std::endl << std::endl << "++婚: " << std::endl << std::endl;
 
-      std::set<std::string> names;
+      std::set<std::string> plusScoreSet;
 
-            for (const std::string& name:vl)
+            for (const std::string& name : vl)
             {
-                  if (names.insert(name).second)
+                  if (plusScoreSet.insert(name).second)
                   {
                         std::cout << name << std::endl;
                   }
             }
+
 
       return 0;
 }
