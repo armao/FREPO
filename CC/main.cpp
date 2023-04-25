@@ -45,7 +45,7 @@ public:
         //map<char,TrieNode*> m_children;   
         
         //construct root的m_isWord是false
-        //【】用於表示屬於誰的m_children
+        //【】表示屬於誰的m_children
 
         //寫入"APP"
 
@@ -166,12 +166,9 @@ int main(int argc, char* argv[])
     while (true) 
     {
         MultiWayTrie trie(argv[4]);
-
-        
         std::cin >> prefix;
 
         trie.print_prefix_words(prefix);
-
     }
 
     //std::map<int, human*> m;
