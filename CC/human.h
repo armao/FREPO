@@ -4,7 +4,7 @@
 class human
 {
 public:
-	explicit human(std::string a_name);
+	human(std::string a_name);
 
 	std::string name()const;
 
